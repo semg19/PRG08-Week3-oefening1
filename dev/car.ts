@@ -18,7 +18,7 @@ class Car {
         this.state = 1;
 
         this.speed = 2;
-        this.jumpDirection = -2;
+        this.jumpDirection = -3;
         this.x = 0;
         this.y = 220;
 
@@ -61,7 +61,7 @@ class Car {
     public jumping():void {
         this.x += this.speed;
         this.y += this.jumpDirection;
-        if(this.y < 160) this.jumpDirection = 2;
+        if(this.y < 140) this.jumpDirection = 3;
         if(this.y > 220) this.state = 3;
     }
 

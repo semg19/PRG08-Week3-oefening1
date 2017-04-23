@@ -19,7 +19,7 @@ var Car = (function () {
         parent.appendChild(this.div);
         this.state = 1;
         this.speed = 2;
-        this.jumpDirection = -2;
+        this.jumpDirection = -3;
         this.x = 0;
         this.y = 220;
         this.wheel1 = new Wheel(this.div, 20);
@@ -53,8 +53,8 @@ var Car = (function () {
     Car.prototype.jumping = function () {
         this.x += this.speed;
         this.y += this.jumpDirection;
-        if (this.y < 160)
-            this.jumpDirection = 2;
+        if (this.y < 140)
+            this.jumpDirection = 3;
         if (this.y > 220)
             this.state = 3;
     };
