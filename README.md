@@ -10,10 +10,10 @@
 - Verwijder de `state` property en alle code die het gedrag beschrijft of checked.
 - Plaats alle gedrag code in drie strategy classes. 
 - De car krijgt in de constructor als eerste het 'driving' gedrag.
-- De constructor van driving zet de snelheid, positie en de wielen van de auto goed.
 - Plaats een keyboard listener in de 'driving' class. Na een keypress verandert het gedrag in 'jumping'.
 - Tijdens 'jumping' is er geen listener. Als de jump is afgelopen ga je automatisch naar 'crashing'.
 - Het crashing gedrag heeft een listener die weer terug springt naar 'driving'.
+- De constructor van driving zet de snelheid, positie en de wielen van de auto in de beginstand.
 
 ## Strategy Pattern Voorbeeld
 
