@@ -28,6 +28,7 @@ class Car {
         window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e));
     }
 
+
     private onKeyDown(e:KeyboardEvent):void {
         if(this.state == 1){
             this.state = 2;
@@ -48,11 +49,9 @@ class Car {
             break;
         }
 
-
         this.div.style.transform ="translate("+this.x+"px,"+this.y+"px)";
         this.wheel1.draw();
         this.wheel2.draw();
-        
     } 
 
     public driving():void {
@@ -68,8 +67,7 @@ class Car {
 
     public crashing():void {
         this.y = 230;
-        this.wheel1.y = 20;
-        this.wheel2.y = 20;
+        this.wheel1.y = this.wheel2.y = 20;
         this.wheel1.speed = -2;
         this.wheel2.speed = 2;
 

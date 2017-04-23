@@ -2,17 +2,18 @@
 
 ## Startcode
 
-- De car class heeft drie methods die het gedrag van de auto beschrijven: `driving()`, `jumping()`, `crashing()`
+- De car class bevat methods en statements voor drie soorten gedrag: `driving()`, `jumping()`, `crashing()`
 - De car heeft een property `state` en een `switch` block waarmee je van gedrag kan wisselen.
 
 ## Opdracht
 
-- Verwijder de state en switch code.
-- Plaats het gedrag in drie strategy classes. 
+- Verwijder de `state` property en alle code die het gedrag beschrijft of checked.
+- Plaats alle gedrag code in drie strategy classes. 
 - De car krijgt in de constructor als eerste het 'driving' gedrag.
-- Als je op een toets drukt krijgt de auto het 'jumping' gedrag.
-- Nadat de auto is geland krijgt de auto automatisch het 'crashing' gedrag.
-- Plaats de keyboard listener in het 'driving' gedrag. Verwijder de listener als het gedrag wisselt. Nu kan de auto alleen springen als je aan het rijden bent.
+- De constructor van driving zet de snelheid, positie en de wielen van de auto goed.
+- Plaats een keyboard listener in de 'driving' class. Na een keypress verandert het gedrag in 'jumping'.
+- Tijdens 'jumping' is er geen listener. Als de jump is afgelopen ga je automatisch naar 'crashing'.
+- Het crashing gedrag heeft een listener die weer terug springt naar 'driving'.
 
 ## Strategy Pattern Voorbeeld
 
@@ -34,4 +35,12 @@ class Person {
         this.myBehavior.doSomething();
     }
 }
+```
+
+### Keyboard listeners toevoegen en verwijderen
+
+```
+this.fn = () => this.doSomething();
+window.addEventListener("keydown", this.fn);
+window.removeEventListener("keydown", this.fn);
 ```
