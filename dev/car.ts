@@ -62,14 +62,15 @@ class Car {
         this.x += this.speed;
         this.y += this.jumpDirection;
         if(this.y < 140) this.jumpDirection = 3;
-        if(this.y > 220) this.state = 3;
+        if(this.y > 217) this.state = 3;
     }
 
     public crashing():void {
-        this.y = 230;
-        this.wheel1.y = this.wheel2.y = 20;
+        //this.y = 230;
+        //this.wheel1.y = this.wheel2.y = 20;
         this.wheel1.speed = -2;
         this.wheel2.speed = 2;
+        this.div.classList.add("crashed");
 
         // gameOver functie van game aanroepen via singleton
         document.getElementById("plateau").classList.add("animationpaused");

@@ -69,14 +69,13 @@ var Car = (function () {
         this.y += this.jumpDirection;
         if (this.y < 140)
             this.jumpDirection = 3;
-        if (this.y > 220)
+        if (this.y > 217)
             this.state = 3;
     };
     Car.prototype.crashing = function () {
-        this.y = 230;
-        this.wheel1.y = this.wheel2.y = 20;
         this.wheel1.speed = -2;
         this.wheel2.speed = 2;
+        this.div.classList.add("crashed");
         document.getElementById("plateau").classList.add("animationpaused");
         document.getElementById("sky").classList.add("animationpaused");
     };
