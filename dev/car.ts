@@ -71,6 +71,7 @@ class Car {
         this.wheel1.speed = -2;
         this.wheel2.speed = 2;
 
+        // gameOver functie van game aanroepen via singleton
         document.getElementById("plateau").classList.add("animationpaused");
         document.getElementById("sky").classList.add("animationpaused");
     }

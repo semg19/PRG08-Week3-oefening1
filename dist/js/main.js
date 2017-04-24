@@ -1,3 +1,17 @@
+var Block = (function () {
+    function Block(parent) {
+        this.div = document.createElement("block");
+        parent.appendChild(this.div);
+        this.speed = -4;
+        this.x = 800;
+        this.y = 240;
+    }
+    Block.prototype.draw = function () {
+        this.x += this.speed;
+        this.div.style.transform = "translate(" + this.x + "px," + this.y + "px)";
+    };
+    return Block;
+}());
 var Wheel = (function () {
     function Wheel(parent, offset) {
         this.div = document.createElement("wheel");
@@ -73,11 +87,13 @@ var Game = (function () {
         var _this = this;
         var container = document.getElementById("container");
         this.car = new Car(container);
+        this.block = new Block(container);
         requestAnimationFrame(function () { return _this.gameLoop(); });
     }
     Game.prototype.gameLoop = function () {
         var _this = this;
         this.car.draw();
+        this.block.draw();
         requestAnimationFrame(function () { return _this.gameLoop(); });
     };
     return Game;

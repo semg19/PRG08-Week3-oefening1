@@ -32,7 +32,7 @@ plateau {
     background-image: url(../images/plateau.png);
     background-repeat: repeat-x;
     width:1600px; height:331px;
-    animation: plateauanimation 4s linear infinite;
+    animation: plateauanimation 3.4s linear infinite;
 }
 
 .animationpaused {
@@ -55,6 +55,10 @@ cloud {
     animation: cloudanimation 19s linear infinite;
 }
 
+block {
+    background-image: url(../images/block.png);
+    width:32px; height: 31px;
+}
 
 
 @keyframes cloudanimation {
