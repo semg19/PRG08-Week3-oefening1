@@ -18,15 +18,6 @@
 ## Strategy Pattern Voorbeeld
 
 ```
-class Behavior {
-    private person : Person;
-    constructor(p:Person){
-        this.person = p;
-    }
-    doSomething(){
-        console.log("I am doing something!");
-    }
-}
 
 class Person {
     private myBehavior:Behavior;
@@ -35,12 +26,40 @@ class Person {
         this.myBehavior.doSomething();
     }
 }
+
+class Jump implements Behavior {
+    public person : Person;
+    constructor(p:Person){
+        this.person = p;
+    }
+    public doSomething(){
+        console.log("I am doing something!");
+    }
+}
+
+interface Behavior {
+    person:Person;
+    doSomething() : void;
+}
 ```
 
-### Keyboard listeners toevoegen en verwijderen
+### Event Listeners toevoegen en verwijderen
 
 ```
-this.fn = () => this.doSomething();
-window.addEventListener("keydown", this.fn);
-window.removeEventListener("keydown", this.fn);
+class Test {
+    private callback:EventListener;
+
+    constructor(){
+        // we slaan de functie op in een variabele
+        this.callback = (e:KeyboardEvent) => this.keyWasPressed(e);
+
+        // listener toevoegen
+        window.addEventListener("keydown", this.callback);
+    }
+
+    private keyWasPressed(e:KeyboardEvent):void {
+        // omdat de functie in een variabele zit kan je removeEventListener doen
+        window.removeEventListener("keydown", this.callback);
+    }
+}
 ```
