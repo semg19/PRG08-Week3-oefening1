@@ -41,11 +41,63 @@ var Car = (function () {
         window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
     }
     Car.prototype.onKeyDown = function (e) {
+        console.log(e.key);
+        if (e.key == ' ' && this.state == 1) {
+            this.state = 2;
+        }
+        else if (e.key == 'Control' && this.state == 1) {
+            this.state = 4;
+        }
+    };
+    Car.prototype.draw = function () {
+        if (this.state == 1) {
+            this.x += this.speed;
+        }
+        else if (this.state == 2) {
+            this.x += this.speed;
+            this.y += this.jumpDirection;
+            if (this.y < 140)
+                this.jumpDirection = 3;
+            if (this.y > 217)
+                this.state = 3;
+        }
+        else if (this.state == 3) {
+            this.wheel1.speed = -2;
+            this.wheel2.speed = 2;
+            this.div.classList.add("crashed");
+            document.getElementById("plateau").classList.add("animationpaused");
+            document.getElementById("sky").classList.add("animationpaused");
+        }
+        else if (this.state == 4) {
+            this.speed -= 0.1;
+            this.x += this.speed;
+        }
+        this.div.style.transform = "translate(" + this.x + "px," + this.y + "px)";
+        this.wheel1.draw();
+        this.wheel2.draw();
+    };
+    return Car;
+}());
+var CarSwitch = (function () {
+    function CarSwitch(parent) {
+        var _this = this;
+        this.div = document.createElement("car");
+        parent.appendChild(this.div);
+        this.state = 1;
+        this.speed = 2;
+        this.jumpDirection = -3;
+        this.x = 0;
+        this.y = 220;
+        this.wheel1 = new Wheel(this.div, 20);
+        this.wheel2 = new Wheel(this.div, 100);
+        window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
+    }
+    CarSwitch.prototype.onKeyDown = function (e) {
         if (this.state == 1) {
             this.state = 2;
         }
     };
-    Car.prototype.draw = function () {
+    CarSwitch.prototype.draw = function () {
         switch (this.state) {
             case 1:
                 this.driving();
@@ -61,10 +113,10 @@ var Car = (function () {
         this.wheel1.draw();
         this.wheel2.draw();
     };
-    Car.prototype.driving = function () {
+    CarSwitch.prototype.driving = function () {
         this.x += this.speed;
     };
-    Car.prototype.jumping = function () {
+    CarSwitch.prototype.jumping = function () {
         this.x += this.speed;
         this.y += this.jumpDirection;
         if (this.y < 140)
@@ -72,14 +124,14 @@ var Car = (function () {
         if (this.y > 217)
             this.state = 3;
     };
-    Car.prototype.crashing = function () {
+    CarSwitch.prototype.crashing = function () {
         this.wheel1.speed = -2;
         this.wheel2.speed = 2;
         this.div.classList.add("crashed");
         document.getElementById("plateau").classList.add("animationpaused");
         document.getElementById("sky").classList.add("animationpaused");
     };
-    return Car;
+    return CarSwitch;
 }());
 var Game = (function () {
     function Game() {

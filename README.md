@@ -8,14 +8,13 @@
 ## Opdracht
 
 - Verwijder de `state` property en alle code die het gedrag beschrijft of checked.
-- Plaats alle gedrag code in drie strategy classes. 
-- De car krijgt in de constructor als eerste het 'driving' gedrag.
+- Verplaats de gedrag code naar drie strategy classes. 
+- De car krijgt in de constructor als eerste het 'driving' gedrag : `this.mybehavior = new Driving()`
 - Plaats een keyboard listener in de 'driving' class. Na een keypress verandert het gedrag in 'jumping'.
-- Tijdens 'jumping' is er geen listener. Als de jump is afgelopen ga je automatisch naar 'crashing'.
-- Het crashing gedrag heeft een listener die weer terug springt naar 'driving'.
-- De constructor van driving zet de snelheid, positie en de wielen van de auto in de beginstand.
+- Plaats een keyboard listener in de 'Driving' class. Na een keypress geef je het 'Jumping' gedrag aan de auto. Let op dat je de keyboard listener ook verwijdert.
+- In de 'jumping' class is geen keyboard listener. De update loop kijkt of de auto geland is, en geeft daarna het "Crashing" gedrag aan de auto.
 
-## Opdracht Praktijkles
+## Optioneel
 
 - Maak de game class een singleton met een gameOver method
 - Maak een array met blocks in game.ts. Er blijven telkens blocks van rechts het beeld in komen.
