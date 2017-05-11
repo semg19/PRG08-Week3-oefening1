@@ -14,6 +14,7 @@ class Car {
     constructor(parent: HTMLElement) {
         this.div = document.createElement("car");
         parent.appendChild(this.div);
+        
 
         this.state = 1;
 
